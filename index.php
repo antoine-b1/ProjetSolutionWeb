@@ -16,13 +16,12 @@
     <p class="center"> <p class="pagemenu"> <a href="account/login.php"> Se connecter </a> </p class="center">  </p class="pagemenu">   
 
         <h2> Bienvenue sur notre site internet ! </h2> 
-        <p> Pour pouvoir envoyer vos fichier, veuillez vous connecter. </p>
+        <p> Veuillez vous connecter pour pouvoir envoyer des fichiers. </p>
 
 </body>
 
-<footer>
-    <p>&copy; 2025. Projet Solution Web EPSI. Tous droits réservés.</p>
+<footer> 
+    <p> &copy; 2025. Projet Solution Web EPSI. Tous droits réservés. </p> 
 </footer>
 
-</body>
 </html>
