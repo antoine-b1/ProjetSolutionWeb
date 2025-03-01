@@ -1,21 +1,35 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nom_fichier = $_POST['nom_fichier'];
-    $nom = $_POST['nom'];
-    $destinataire = $_POST['destinataire'];
-    $matiere = $_POST['matiere'];
-    $description = $_POST['description'];
-    $date = $_POST['date'];
+    $nom_fichier = $_POST['nom_fichier'] ?? '';
+    $infoFile = "../uploads/$nom_fichier/info.txt";
 
-    $fichier_a_modifier = "../uploads/" . $nom_fichier;
-
-    if (file_exists($fichier_a_modifier)) {
-        echo "Les informations du fichier ont été modifiées.";
+    if (file_exists($infoFile)) {
+        if (isset($_POST['update'])) {
+            $nom = $_POST['nom'] ?? '';
+            $destinataire = $_POST['destinataire'] ?? '';
+            $matiere = $_POST['matiere'] ?? '';
+            $description = $_POST['description'] ?? '';
+            $date = $_POST['date'] ?? '';
+            $infoContent = "Nom du fichier : $nom\nDestinataire : $destinataire\nMatière : $matiere\nDescription : $description\nDate : $date\n";
+            file_put_contents($infoFile, $infoContent);
+            echo "Les informations du fichier ont été modifiées.";
+        } else {
+            $infoContent = file_get_contents($infoFile);
+            $lines = explode("\n", $infoContent);
+            foreach ($lines as $line) {
+                list($key, $value) = explode(" : ", $line, 2) + [null, null];
+                $infoData[trim($key)] = trim($value);
+            }
+            $nom = $infoData['Nom du fichier'] ?? '';
+            $destinataire = $infoData['Destinataire'] ?? '';
+            $matiere = $infoData['Matière'] ?? '';
+            $description = $infoData['Description'] ?? '';
+            $date = $infoData['Date'] ?? '';
+        }
     } else {
-        echo "Le fichier n'existe pas.";
-    }
-}
-?>
+        echo "Le fichier info.txt n'existe pas.";
+    } } 
+    ?> 
 
 <!DOCTYPE html>
 <html lang="fr">

@@ -19,32 +19,35 @@
 
 <?php
 $dossier = new DirectoryIterator("../uploads");
-foreach($dossier as $fichier){
-  
-  if($fichier->isDot())
-    continue;
+foreach ($dossier as $fichier) {
+    if ($fichier->isDot()) continue;
+
     $nomDossier = $fichier->getFilename();
     $sousDossier = new DirectoryIterator($fichier->getPathname());
-    foreach($sousDossier as $fichierInterne) {
-        if($fichierInterne->isDot())
-            continue;
-        $cheminComplet = $nomDossier . '/' . $fichierInterne->getFilename();
-        echo 'Nom du fichier : ' . $cheminComplet . '<br>';
-        echo '<form method="post" action="edit.php">';
-        echo '<input type="hidden" name="fichier" value="' . $cheminComplet . '">';
-        echo '<button type="submit">Modifier le fichier</button>';
-        echo '</form>';
+    foreach ($sousDossier as $fichierInterne) {
+        if ($fichierInterne->isDot() || $fichierInterne->getFilename() === 'info.txt') continue;
 
-        echo '<form method="post" action="delete.php" onsubmit="return confirm(\'Êtes-vous sûr de vouloir supprimer ce dossier ?\') && confirm(\'La destruction de ce dossier est définitive. Confirmer ?\');">';
-        echo '<input type="hidden" name="fichier" value="' . $cheminComplet . '">';
-        echo '<button type="submit">Supprimer le fichier</button>';
-        echo '</form>';
+        $ext = strtolower(pathinfo($fichierInterne->getFilename(), PATHINFO_EXTENSION));
+        if (in_array($ext, ['zip', 'pptx'])) {
+            $cheminComplet = $nomDossier . '/' . $fichierInterne->getFilename();
 
-        echo '<form method="post" action="download.php">';
-        echo '<input type="hidden" name="fichier" value="' . $cheminComplet . '">';
-        echo '<button type="submit">Télécharger le fichier</button>';
-        echo '</form>';
-        echo '<br><br>';
+            echo 'Nom du fichier : ' . str_replace('-', ' ', $cheminComplet) . '<br>';
+            echo '<form method="post" action="edit.php">';
+            echo '<input type="hidden" name="nom_fichier" value="' . $nomDossier . '">';
+            echo '<button type="submit">Modifier le fichier</button>';
+            echo '</form>';
+
+            echo '<form method="post" action="delete.php" onsubmit="return confirm(\'Êtes-vous sûr de vouloir supprimer ce dossier ?\') && confirm(\'La destruction de ce dossier est définitive. Confirmer ?\');">';
+            echo '<input type="hidden" name="nom_fichier" value="' . $nomDossier . '">';
+            echo '<button type="submit">Supprimer le fichier</button>';
+            echo '</form>';
+
+            echo '<form method="post" action="download.php">';
+            echo '<input type="hidden" name="nom_fichier" value="' . $cheminComplet . '">';
+            echo '<button type="submit">Télécharger le fichier</button>';
+            echo '</form>';
+            echo '<br><br>';
+        }
     }
 }
 ?>

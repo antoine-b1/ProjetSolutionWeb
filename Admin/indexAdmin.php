@@ -16,6 +16,11 @@
    
 </header>
 
+<p class="right"> Ecole : EPSI/WIS ARRAS </p class="right">      
+
+    <h3> Bienvenue sur la page d'Administrateur ! </h3>
+        <p> Vous pouvez maintenant créer un nouveau dépot ou voir les dépôts existant. </p> <br> <br>
+
 <h2>Créer un dépôt : </h2>
 <a href="../depot/createDepot.php"> Cliquez ici pour créer un nouveau dépôt </a> <br> <br>
 

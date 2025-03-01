@@ -19,17 +19,20 @@
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nom = $_POST['nom'];
-    $matiere = $_POST['matiere'];
-    $file = $_FILES['monfichier'];
+    $nom = $_POST['nom'] ?? '';
+    $destinataire = $_POST['destinataire'] ?? '';
+    $matiere = $_POST['matiere'] ?? '';
+    $description = $_POST['description'] ?? '';
+    $date = $_POST['date'] ?? '';
+    $file = $_FILES['monfichier'] ?? null;
 
-    $subDir = '../uploads/' . $nom . ' - ' . $matiere . ' / ';
+    $subDir = '../uploads/' . $nom . '-' . $matiere . '/';
     
     if (!is_dir($subDir)) mkdir($subDir, 0777, true);
 
     $uploadFile = $subDir . basename($file['name']);
 
-    if (move_uploaded_file($file['tmp_name'], $uploadFile)) {
+    if ($file && move_uploaded_file($file['tmp_name'], $uploadFile)) {
         echo "Le dépôt a été créé avec succès!";
     } else {
         echo "Échec de la création du dépôt.";
