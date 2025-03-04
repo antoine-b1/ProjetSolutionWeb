@@ -14,9 +14,10 @@
     <h1 class="green">Accueil</h1>
     <p class="center"><p class="pagemenu">Utilisateur</p></p>
 </header>
-<p class="right"> Ecole : EPSI/WIS ARRAS </p class="right">      
+<p class="right"> École : EPSI/WIS ARRAS </p class="right">      
 
-    <h3> Bienvenue sur la page élève ! </h3>
+<h3> Bienvenue sur la page d'Utilisateur, </h3>
+        <p> Cette espace est destinée aux apprenants ! </p> <br>
 
 <h2>Dépôts disponibles :</h2> <br> <br>
 
