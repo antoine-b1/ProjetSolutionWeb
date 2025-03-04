@@ -20,17 +20,14 @@
 <?php
 $dossier = new DirectoryIterator("../uploads");
 foreach ($dossier as $fichier) {
-    if ($fichier->isDot()) continue;
-
+  if($fichier->isDot())
+    continue;
     $nomDossier = $fichier->getFilename();
     $sousDossier = new DirectoryIterator($fichier->getPathname());
-    foreach ($sousDossier as $fichierInterne) {
-        if ($fichierInterne->isDot() || $fichierInterne->getFilename() === 'info.txt') continue;
-
-        $ext = strtolower(pathinfo($fichierInterne->getFilename(), PATHINFO_EXTENSION));
-        if (in_array($ext, ['zip', 'pptx'])) {
-            $cheminComplet = $nomDossier . '/' . $fichierInterne->getFilename();
-
+    foreach($sousDossier as $fichierInterne) {
+        if($fichierInterne->isDot())
+            continue;
+        $cheminComplet = $nomDossier . '/' . $fichierInterne->getFilename();
             echo 'Titre du devoir : ' . str_replace('-', ' ', $cheminComplet) . '<br>';
             echo '<form method="post" action="edit.php">';
             echo '<input type="hidden" name="nom_fichier" value="' . $nomDossier . '">';
@@ -49,7 +46,6 @@ foreach ($dossier as $fichier) {
             echo '<br><br>';
         }
     }
-}
 ?>
 
 

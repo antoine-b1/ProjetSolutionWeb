@@ -19,7 +19,7 @@
 <h3> Bienvenue sur la page d'Utilisateur, </h3>
         <p> Cette espace est destinée aux apprenants ! </p> <br>
 
-<h2>Dépôts disponibles :</h2> <br> <br>
+<h2>Dépôts disponibles :</h2> <br>
 
 <?php
 $dossier = new DirectoryIterator("../uploads");
@@ -27,7 +27,7 @@ foreach($dossier as $fichier){
     if($fichier->isDot()) continue;
     echo 'Nom du fichier : ' . $fichier->getFilename() . '<br>';
 }
-?>
+?> <br>
 
 <footer>
     <p>&copy; 2025. Projet Solution Web EPSI. Tous droits réservés.</p>

@@ -1,36 +1,3 @@
-<?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nom_fichier = $_POST['nom_fichier'] ?? '';
-    $infoFile = "../uploads/$nom_fichier/info.txt";
-
-    if (file_exists($infoFile)) {
-        if (isset($_POST['update'])) {
-            $nom = $_POST['nom'] ?? '';
-            $destinataire = $_POST['destinataire'] ?? '';
-            $matiere = $_POST['matiere'] ?? '';
-            $description = $_POST['description'] ?? '';
-            $date = $_POST['date'] ?? '';
-            $infoContent = "Nom du fichier : $nom\nDestinataire : $destinataire\nMatière : $matiere\nDescription : $description\nDate : $date\n";
-            file_put_contents($infoFile, $infoContent);
-            echo "Les informations du fichier ont été modifiées.";
-        } else {
-            $infoContent = file_get_contents($infoFile);
-            $lines = explode("\n", $infoContent);
-            foreach ($lines as $line) {
-                list($key, $value) = explode(" : ", $line, 2) + [null, null];
-                $infoData[trim($key)] = trim($value);
-            }
-            $nom = $infoData['Nom du fichier'] ?? '';
-            $destinataire = $infoData['Destinataire'] ?? '';
-            $matiere = $infoData['Matière'] ?? '';
-            $description = $infoData['Description'] ?? '';
-            $date = $infoData['Date'] ?? '';
-        }
-    } else {
-        echo "Le fichier info.txt n'existe pas.";
-    } } 
-    ?> 
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -83,8 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label for="date"> A rendre pour le : </label><br>
         <input type="date" id="date" name="date" value=""><br><br>
         
-        <input type="submit" value=" Enregistrer les modifications ">
-    </form>
+        <input type="submit" class="submitcreatedepot" value=" Enregistrer les modifications ">
+    </form> <br> 
 
 <footer>
     <p>&copy; 2025. Projet Solution Web EPSI. Tous droits réservés.</p>
