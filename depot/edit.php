@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <h1> Modifier le fichier : </h1>
     <form method="post">
         <input type="hidden" name="nom_fichier" value="nom_du_fichier_a_modifier">
-        <label for="nom"> Nom du fichier : </label><br>
+        <label for="nom"> Titre du devoir : </label><br>
         <input type="text" id="nom" name="nom" value=""><br><br>
         
         <label for="destinataire"> Destinataire : </label><br>

@@ -31,7 +31,7 @@ foreach ($dossier as $fichier) {
         if (in_array($ext, ['zip', 'pptx'])) {
             $cheminComplet = $nomDossier . '/' . $fichierInterne->getFilename();
 
-            echo 'Nom du fichier : ' . str_replace('-', ' ', $cheminComplet) . '<br>';
+            echo 'Titre du devoir : ' . str_replace('-', ' ', $cheminComplet) . '<br>';
             echo '<form method="post" action="edit.php">';
             echo '<input type="hidden" name="nom_fichier" value="' . $nomDossier . '">';
             echo '<button type="submit">Modifier le fichier</button>';

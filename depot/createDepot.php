@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <form method="POST" action="createDepot.php" enctype="multipart/form-data">
-    <label for="nom"> Nom du fichier : </label><br>
+    <label for="nom"> Titre du devoir : </label><br>
     <input type="text" id="nom" name="nom" required><br><br>
     
     <label for="destinataire"> Destinataire : </label><br>
@@ -77,8 +77,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <label for="monfichier"> Joindre un fichier : </label><br>
     <input type="file" id="monfichier" name="monfichier" accept=".zip,.pptx" required><br><br>
     
-    <input type="submit" value="Créer le Dépôt">
-</form>
+    <input type="submit" class="submitcreatedepot" value="Créer le Dépôt">
+</form> <br>
 
 <footer>
     <p>&copy; 2025. Projet Solution Web EPSI. Tous droits réservés.</p>

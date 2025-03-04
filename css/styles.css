@@ -53,3 +53,17 @@ header {
     font-weight: bold;
     align-items: center;
     margin: 10px }
+
+.submitcreatedepot {
+    background: #E4803E;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    width: auto;
+    border-radius: 5px;
+    font-size: 16px; }
+
+label {
+    font-size: 18px; 
+    font-weight: bold;
+    letter-spacing: 1px; }
