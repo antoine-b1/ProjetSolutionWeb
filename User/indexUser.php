@@ -14,8 +14,11 @@
     <h1 class="green">Accueil</h1>
     <p class="center"><p class="pagemenu">Utilisateur</p></p>
 </header>
+<p class="right"> Ecole : EPSI/WIS ARRAS </p class="right">      
 
-<h2>Dépôts disponibles :</h2>
+    <h3> Bienvenue sur la page élève ! </h3>
+
+<h2>Dépôts disponibles :</h2> <br> <br>
 
 <?php
 $dossier = new DirectoryIterator("../uploads");
