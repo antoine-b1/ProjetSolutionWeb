@@ -25,7 +25,11 @@
 $dossier = new DirectoryIterator("../uploads");
 foreach($dossier as $fichier){
     if($fichier->isDot()) continue;
-    echo 'Nom du fichier : ' . $fichier->getFilename() . '<br>';
+    echo 'Devoirs : ' . $fichier->getFilename() . '<br>';
+    echo '<form method="post" action="../depot/rendredevoirs.php">';
+    echo '<button type="submit"> Rendre le devoirs </button>';
+    echo '</form>';
+    echo '<br>';
 }
 ?> <br>
 
