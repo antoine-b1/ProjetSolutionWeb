@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion</title>
+    <title> Connexion </title>
     <link href="../css/styles.css" rel="stylesheet"/>
     <link rel="icon" type="image/png" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS5VYolg4PlHUkQ7wMn4lTENI-rS9XfFDTOg&s">
 </head>
@@ -52,9 +52,9 @@ if ($user && password_verify($password, $user['password'])) {
 
 <header>
     <img src="https://www.nuitdelinfo.com/inscription/uploads/ecoles/573/logos/logo.png" alt="Logo EPSI/WIS" class="logoepsi" width="85" height="80">
-    <h1 class="green">Page de connexion</h1> 
+    <h1 class="green"> Page de connexion </h1> 
 </header>
-<div class="title">Connexion</div> <br>
+<div class="title"> Connexion </div> <br>
     <form method="post" action=""> <br>
         <label for=""> Nom : </label>
         <input type="text" name="lastName" required/> <br> <br>
@@ -69,6 +69,6 @@ if ($user && password_verify($password, $user['password'])) {
         <input type="submit" value="Se connecter" name="envoyer">
     </form> <br>
 Si vous n'avez pas de compte, veuillez vous inscrire :
-<a href="register.php">Page d'inscription</a>
-</body>
+<a href="register.php"> Page d'inscription </a>
+</body> 
 </html>

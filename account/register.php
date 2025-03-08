@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription</title>
+    <title> Inscription </title>
     <link href="../css/styles.css" rel="stylesheet"/>
     <link rel="icon" type="image/png" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS5VYolg4PlHUkQ7wMn4lTENI-rS9XfFDTOg&s">
 </head>
@@ -52,9 +52,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <header>
     <img src="https://www.nuitdelinfo.com/inscription/uploads/ecoles/573/logos/logo.png" alt="Logo EPSI/WIS" class="logoepsi" width="85" height="80">
-    <h1 class="green">Page d'inscription</h1>   
+    <h1 class="green"> Page d'inscription </h1>   
 </header>
-<div class="title">Inscription</div>
+<div class="title"> Inscription </div>
 <br>
 <form method="post" action="">
     <br>
@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </form>
 <br>
 Si vous ne possédez pas de compte, veuillez en créer un :
-<a href="login.php">Page de connexion</a>
+<a href="login.php"> Page de connexion </a>
 
 </body>
 </html>

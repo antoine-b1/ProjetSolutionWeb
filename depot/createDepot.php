@@ -26,14 +26,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $date = $_POST['date'] ?? '';
     $file = $_FILES['monfichier'] ?? null;
 
-    $subDir = '../uploads/' . $nom . '-' . $matiere . '/';
-    
-    if (!is_dir($subDir)) mkdir($subDir, 0777, true);
+    $subDir = '../uploads/' . $matiere . '/' . $nom . '/';
+    if (!is_dir($subDir)) {
+        mkdir($subDir, 0777, true); 
+    }    
 
     $uploadFile = $subDir . basename($file['name']);
 
-    if ($file && move_uploaded_file($file['tmp_name'], $uploadFile)) {
+    if (move_uploaded_file($file['tmp_name'], $uploadFile)) {
         echo "Le dépôt a été créé avec succès!";
+        echo '<a href="existDepot.php"> Voir les dépôts disponibles </a>';
     } else {
         echo "Échec de la création du dépôt.";
     }

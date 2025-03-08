@@ -16,7 +16,7 @@
 
 <h1> Modifier le fichier : </h1>
     <form method="post">
-        <input type="hidden" name="nom_fichier" value="nom_du_fichier_a_modifier">
+        <input type="hidden" name="nom_fichier" value="">
         <label for="nom"> Titre du devoir : </label><br>
         <input type="text" id="nom" name="nom" value=""><br><br>
         
