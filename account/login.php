@@ -4,16 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Connexion </title>
-    <link href="../css/styles.css" rel="stylesheet"/>
-    <link rel="icon" type="image/png" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS5VYolg4PlHUkQ7wMn4lTENI-rS9XfFDTOg&s">
+    <link rel="stylesheet" href="../css/login.css">
+
+    <link rel="icon" type="image/png" href="../image/logoEpsi/images.png">
 </head>
 <body>
 
 <?php
-$servername = "localhost"; 
-$username = "login8143"; 
-$password = "bSNNMXOKflUFBdV"; 
-$dbname = "dbProjetWeb";  
+$servername = "localhost";
+$username = "login8146";
+$password = "LCBREoqRfhbcJGz";
+$dbname = "dbProjetWeb";
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -33,26 +34,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-
-if ($user && password_verify($password, $user['password'])) {
-    if ($user['classe'] == 'Admin') {
-        header("Location: ../Admin/indexAdmin.php");
+    if ($user && password_verify($password, $user['password'])) {
+        if ($user['classe'] == 'Admin') {
+            header("Location: ../Admin/indexAdmin.php");
+        } else {
+            header("Location: ../User/indexUser.php");
+        }
+        exit();
     } else {
-        header("Location: ../User/indexUser.php");
+        echo "Échec de la connexion. Veuillez vérifier votre email et votre mot de passe.<br> <br>";
+        exit();
     }
-    exit();
-} else {
-    echo "Échec de la connexion. Veuillez vérifier votre email et votre mot de passe.<br> <br>";
-    exit();
 }
-}
-
 
 ?>
 
 <header>
-    <img src="https://www.nuitdelinfo.com/inscription/uploads/ecoles/573/logos/logo.png" alt="Logo EPSI/WIS" class="logoepsi" width="85" height="80">
-    <h1 class="green"> Page de connexion </h1> 
+    <img src="../image/logoEpsiWis/logoEpsi.png" alt="Logo EPSI/WIS" class="logoepsi" width="85" height="80">
+    <h1 class="green"> Page de connexion </h1>
 </header>
 <div class="title"> Connexion </div> <br>
     <form method="post" action=""> <br>
@@ -70,5 +69,5 @@ if ($user && password_verify($password, $user['password'])) {
     </form> <br>
 Si vous n'avez pas de compte, veuillez vous inscrire :
 <a href="register.php"> Page d'inscription </a>
-</body> 
+</body>
 </html>
