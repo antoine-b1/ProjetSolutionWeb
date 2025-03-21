@@ -11,9 +11,9 @@
 
 <?php
 $servername = "localhost"; 
-$username = "login8146"; 
-$password = "LCBREoqRfhbcJGz"; 
-$dbname = "dbProjetWeb"; 
+$username = "login8143"; 
+$password = "bSNNMXOKflUFBdV"; 
+$dbname = "dbProjetWeb";   
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -30,16 +30,19 @@ try {
 require '../config/database.php'; // Assure-toi que le chemin est correct
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST["username"];
+    $nom = $_POST["nom"];
+    $prenom = $_POST["prenom"];
     $email = $_POST["email"];
-    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
-    $role = "user"; // Rôle par défaut
+    $mot_de_passe = password_hash($_POST["mot_de_passe"], PASSWORD_DEFAULT);
+    $role = "utilisateur";
 
-    $sql = "INSERT INTO users (username, email, password, role) VALUES (:username, :email, :password, :role)";
+
+    $sql = "INSERT INTO utilisateurs (nom, prenom, email, mot_de_passe, role) VALUES (:nom, :prenom, :email, :mot_de_passe, :role)";
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':username', $username);
+    $stmt->bindParam(':nom', $nom);
+    $stmt->bindParam(':prenom', $prenom);
     $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':password', $password);
+    $stmt->bindParam(':mot_de_passe', $mot_de_passe);
     $stmt->bindParam(':role', $role);
 
     if ($stmt->execute()) {
@@ -60,21 +63,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <br>
 <form method="post" action="">
     <br>
-    <label for=""> Nom : </label>
-    <input type="text" name="lastName" required/> 
+    <label for="nom"> Nom : </label>
+    <input type="text" name="nom" required/> 
     <br><br>
-    <label for=""> Prénom : </label>
-    <input type="text" name="firstName" required/> 
+    <label for="prenom"> Prénom : </label>
+    <input type="text" name="prenom" required/> 
     <br><br>
-    <label for=""> Email : </label>
+    <label for="email"> Email : </label>
     <input type="email" name="email" required/> 
     <br><br>
-    <label for=""> Mot de passe : </label>
-    <input type="password" name="password" required/> 
+    <label for="mot_de_passe"> Mot de passe : </label>
+    <input type="password" name="mot_de_passe" required/> 
     <br><br>
-    <label for=""> Classe : </label>
-    <input type="text" name="classe" required/> 
-    <br> <br>
     <input type="submit" value="S'inscrire" name="envoyer">
 </form>
 <br>
