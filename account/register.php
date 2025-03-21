@@ -4,16 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Inscription </title>
-    <link href="../css/styles.css" rel="stylesheet"/>
+    <link href="../css/inscription.css" rel="stylesheet"/>
     <link rel="icon" type="image/png" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS5VYolg4PlHUkQ7wMn4lTENI-rS9XfFDTOg&s">
 </head>
 <body>
 
 <?php
-$servername = ""; 
-$username = ""; 
-$password = ""; 
-$dbname = ""; 
+$servername = "localhost"; 
+$username = "login8146"; 
+$password = "LCBREoqRfhbcJGz"; 
+$dbname = "dbProjetWeb"; 
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -26,29 +26,31 @@ try {
     exit();
 }
 
+
+require '../config/database.php'; // Assure-toi que le chemin est correct
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $lastName = $_POST["lastName"];
-    $firstName = $_POST["firstName"];
+    $username = $_POST["username"];
     $email = $_POST["email"];
     $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
-    $classe = $_POST["classe"];
+    $role = "user"; // Rôle par défaut
 
-    $sql = "INSERT INTO `users` (`lastName`, `firstName`, `email`, `password`, `classe`) VALUES (:lastName, :firstName, :email, :password, :classe)";
+    $sql = "INSERT INTO users (username, email, password, role) VALUES (:username, :email, :password, :role)";
     $stmt = $conn->prepare($sql);
-
-    $stmt->bindParam(':lastName', $lastName);
-    $stmt->bindParam(':firstName', $firstName);
+    $stmt->bindParam(':username', $username);
     $stmt->bindParam(':email', $email);
     $stmt->bindParam(':password', $password);
-    $stmt->bindParam(':classe', $classe);
+    $stmt->bindParam(':role', $role);
 
     if ($stmt->execute()) {
-        echo "Le compte utilisateur a été créé avec succès.";
+        header("Location: login.php");
+        exit();
     } else {
-        echo "Il y a eu une erreur lors de la création du compte utilisateur.";
+        echo "Erreur lors de l'inscription.";
     }
 }
 ?>
+
 
 <header>
     <img src="https://www.nuitdelinfo.com/inscription/uploads/ecoles/573/logos/logo.png" alt="Logo EPSI/WIS" class="logoepsi" width="85" height="80">

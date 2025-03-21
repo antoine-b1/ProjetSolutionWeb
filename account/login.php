@@ -10,10 +10,10 @@
 <body>
 
 <?php
-$servername = ""; 
-$username = ""; 
-$password = ""; 
-$dbname = "";  
+$servername = "localhost"; 
+$username = "login8146"; 
+$password = "LCBREoqRfhbcJGz"; 
+$dbname = "dbProjetWeb";  
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
