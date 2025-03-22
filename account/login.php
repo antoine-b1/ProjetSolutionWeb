@@ -12,8 +12,8 @@
 
 <?php
 $servername = "localhost";
-$username = "login8146";
-$password = "LCBREoqRfhbcJGz";
+$username = "login8143";
+$password = "bSNNMXOKflUFBdV";
 $dbname = "dbProjetWeb";
 
 try {
@@ -26,15 +26,15 @@ try {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
-    $password = $_POST["password"];
+    $mot_de_passe = $_POST["mot_de_passe"];
 
-    $sql = "SELECT * FROM `users` WHERE `email` = :email";
+    $sql = "SELECT * FROM `utilisateurs` WHERE `email` = :email";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':email', $email);
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($user && password_verify($password, $user['password'])) {
+    if ($user && password_verify($mot_de_passe, $user["mot_de_passe"])) {
         if ($user['classe'] == 'Admin') {
             header("Location: ../Admin/indexAdmin.php");
         } else {
@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <label for=""> Email : </label>
         <input type="email" name="email" required/> <br> <br>
         <label for=""> Mot de passe : </label>
-        <input type="password" name="password" required/> <br> <br>
+        <input type="password" name="mot_de_passe" required/> <br> <br>
         <label for=""> Classe : </label>
         <input type="text" name="classe" required/> <br> <br>
         <input type="submit" value="Se connecter" name="envoyer">
