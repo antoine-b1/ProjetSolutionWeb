@@ -10,23 +10,8 @@
 <body>
 
 <?php
-$servername = "localhost";
-$username = "login8146";
-$password = "LCBREoqRfhbcJGz";
-$dbname = "dbProjetWeb";
-
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    if (isset($_POST['envoyer'])) {
-        echo "L'inscription a été correctement effectuée ! ";
-    }
-} catch (PDOException $e) {
-    echo "La connexion a échoué : " . $e->getMessage();
-    exit();
-}
-
-require '../config/database.php'; // Assure-toi que le chemin est correct
+require '../config/database.php';
+$message = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nom = $_POST["nom"];
@@ -35,23 +20,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mot_de_passe = password_hash($_POST["mot_de_passe"], PASSWORD_DEFAULT);
     $role = "utilisateur";
 
-    $sql = "INSERT INTO utilisateurs (nom, prenom, email, mot_de_passe, role) VALUES (:nom, :prenom, :email, :mot_de_passe, :role)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':nom', $nom);
-    $stmt->bindParam(':prenom', $prenom);
-    $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':mot_de_passe', $mot_de_passe);
-    $stmt->bindParam(':role', $role);
-
-    if ($stmt->execute()) {
-        header("Location: login.php");
-        exit();
+    
+    $check = $conn->prepare("SELECT * FROM utilisateurs WHERE email = :email");
+    $check->execute(['email' => $email]);
+    if ($check->rowCount() > 0) {
+        $message = "<p style='color:red;'>Cet email est déjà utilisé.</p>";
     } else {
-        echo "Erreur lors de l'inscription.";
+        $sql = "INSERT INTO utilisateurs (nom, prenom, email, mot_de_passe, role) 
+                VALUES (:nom, :prenom, :email, :mot_de_passe, :role)";
+        $stmt = $conn->prepare($sql);
+        $success = $stmt->execute([
+            ':nom' => $nom,
+            ':prenom' => $prenom,
+            ':email' => $email,
+            ':mot_de_passe' => $mot_de_passe,
+            ':role' => $role
+        ]);
+
+        if ($success) {
+            header("Location: login.php");
+            exit();
+        } else {
+            $message = "<p style='color:red;'>Erreur lors de l'inscription.</p>";
+        }
     }
 }
 ?>
-
 
 <header>
     <img src="../image/logoEpsiWis/logoEpsi.png" alt="Logo EPSI/WIS" class="logoepsi" width="85" height="80">

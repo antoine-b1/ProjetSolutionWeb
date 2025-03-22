@@ -1,11 +1,11 @@
-/* Reset de base */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Corps de la page */
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #f4f6f8;
@@ -14,7 +14,7 @@ body {
     padding: 30px;
 }
 
-/* Header */
+
 header {
     background-color: #005792;
     color: white;
@@ -25,7 +25,7 @@ header {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Texte aligné à droite */
+
 .right {
     text-align: right;
     font-size: 14px;
@@ -33,18 +33,18 @@ header {
     margin-bottom: 20px;
 }
 
-/* Titres */
+
 h2, h3 {
     color: #003f5c;
     margin-bottom: 10px;
 }
 
-/* Paragraphes */
+
 p {
     margin-bottom: 10px;
 }
 
-/* Liens */
+
 a {
     display: inline-block;
     background-color: #007bff;
@@ -60,7 +60,7 @@ a:hover {
     background-color: #0056b3;
 }
 
-/* Footer */
+
 footer {
     text-align: center;
     margin-top: 40px;

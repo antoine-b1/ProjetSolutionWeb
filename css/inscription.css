@@ -1,4 +1,4 @@
-/* Styles généraux */
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -11,7 +11,7 @@ body {
     height: 100vh;
 }
 
-/* Style de l'en-tête */
+
 header {
     text-align: center;
     margin-bottom: 20px;
@@ -22,7 +22,7 @@ header h1 {
     font-size: 24px;
 }
 
-/* Conteneur du formulaire */
+
 form {
     background: white;
     padding: 25px;
@@ -34,7 +34,7 @@ form {
     align-items: center;
 }
 
-/* Style des étiquettes */
+
 form label {
     font-weight: bold;
     margin-bottom: 5px;
@@ -44,7 +44,7 @@ form label {
     width: 100%;
 }
 
-/* Style des champs input */
+
 form input {
     width: 100%;
     padding: 10px;
@@ -62,7 +62,7 @@ form input:focus {
     box-shadow: 0px 0px 8px rgba(52, 152, 219, 0.3);
 }
 
-/* Style du bouton */
+
 form input[type="submit"] {
     background-color: #3498db;
     color: white;
@@ -75,7 +75,7 @@ form input[type="submit"]:hover {
     background-color: #2980b9;
 }
 
-/* Lien de connexion */
+
 a {
     text-decoration: none;
     color: #3498db;

@@ -11,43 +11,39 @@
 <body>
 
 <?php
-$servername = "localhost";
-$username = "login8146";
-$password = "LCBREoqRfhbcJGz";
-$dbname = "dbProjetWeb";
 
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo "La connexion a échoué : " . $e->getMessage();
-    exit();
-}
+
+
+session_start();
+require '../config/database.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
-    $mot_de_passe = $_POST["mot_de_passe"];
+    $password = $_POST["mot_de_passe"];
 
-    $sql = "SELECT * FROM `utilisateurs` WHERE `email` = :email";
+    $sql = "SELECT * FROM utilisateurs WHERE email = :email";
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':email', $email);
-    $stmt->execute();
+    $stmt->execute(['email' => $email]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($user && password_verify($mot_de_passe, $user["mot_de_passe"])) {
-        if ($user['role'] == 'admin') {
+    if ($user && password_verify($password, $user["mot_de_passe"])) {
+        $_SESSION["user_id"] = $user["id"];
+        $_SESSION["role"] = $user["role"];
+
+        if ($user["role"] === "admin") {
             header("Location: ../Admin/indexAdmin.php");
         } else {
             header("Location: ../User/indexUser.php");
         }
-        exit();
+        exit;
     } else {
-        echo "Échec de la connexion. Veuillez vérifier votre email et votre mot de passe.<br> <br>";
-        exit();
+        echo "Email ou mot de passe incorrect.";
     }
 }
-
 ?>
+
+
+
 
 <header>
     <img src="../image/logoEpsiWis/logoEpsi.png" alt="Logo EPSI/WIS" class="logoepsi" width="85" height="80">

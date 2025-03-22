@@ -1,3 +1,18 @@
+<?php
+session_start();
+
+if (!isset($_SESSION["user_id"])) {
+    header("Location: ../account/login.php");
+    exit;
+}
+
+if ($_SESSION["role"] !== "admin") {
+   
+    header("Location: ../User/indexUser.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
