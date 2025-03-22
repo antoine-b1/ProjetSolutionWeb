@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($user && password_verify($mot_de_passe, $user["mot_de_passe"])) {
-        if ($user['classe'] == 'Admin') {
+        if ($user['role'] == 'admin') {
             header("Location: ../Admin/indexAdmin.php");
         } else {
             header("Location: ../User/indexUser.php");
@@ -63,8 +63,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="email" name="email" required/> <br> <br>
         <label for=""> Mot de passe : </label>
         <input type="password" name="mot_de_passe" required/> <br> <br>
-        <label for=""> Classe : </label>
-        <input type="text" name="classe" required/> <br> <br>
         <input type="submit" value="Se connecter" name="envoyer">
     </form> <br>
 Si vous n'avez pas de compte, veuillez vous inscrire :
