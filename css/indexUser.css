@@ -1,0 +1,98 @@
+/* indexUser.css */
+
+:root {
+    --epsi-blue: #004b87;
+    --wis-green: #76b947;
+    --light-gray: #f4f4f4;
+    --dark-gray: #333;
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-gray);
+    margin: 0;
+    padding: 0;
+    color: var(--dark-gray);
+}
+
+header {
+    background: linear-gradient(90deg, var(--epsi-blue), var(--wis-green));
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    padding: 15px 30px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+header img.logoepsi {
+    margin-right: 20px;
+}
+
+header h1.green {
+    font-size: 2em;
+    flex-grow: 1;
+    margin: 0;
+}
+
+.pagemenu {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: var(--white);
+}
+
+.right {
+    text-align: right;
+    margin: 10px 30px;
+    font-weight: bold;
+}
+
+h3, h2 {
+    text-align: center;
+    color: var(--epsi-blue);
+}
+
+p {
+    text-align: center;
+    font-size: 1.1em;
+}
+
+form {
+    display: inline-block;
+}
+
+button {
+    background-color: var(--wis-green);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    font-size: 1em;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #5aa334;
+}
+
+div {
+    background-color: var(--white);
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    max-width: 500px;
+    margin: 15px auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    background-color: var(--epsi-blue);
+    color: var(--white);
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 40px;
+    font-size: 0.9em;
+}
