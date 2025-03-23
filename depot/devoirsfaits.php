@@ -14,7 +14,7 @@ if (!$depot_id) {
     exit;
 }
 
-// Récupérer les rendus
+
 $stmt = $conn->prepare("
     SELECT dr.fichier, dr.date_rendu, u.nom, u.prenom
     FROM devoirs_rendus dr

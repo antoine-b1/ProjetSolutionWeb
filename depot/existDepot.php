@@ -28,7 +28,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
 </header>
 
 <?php
-// Récupération des dépôts depuis la base
+
 $stmt = $conn->prepare("SELECT * FROM depots_fichiers");
 $stmt->execute();
 $depots = $stmt->fetchAll();
