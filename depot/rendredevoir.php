@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_FILES['mondevoir'])) {
 <head>
     <meta charset="utf-8">
     <title>Rendre un devoir</title>
-    <link href="../css/styles.css" rel="stylesheet"/>
+    <link href="../css/index.css" rel="stylesheet"/>
 </head>
 <body>
 
