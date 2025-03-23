@@ -1,4 +1,4 @@
-/* Reset de base */
+
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +12,7 @@ body {
     padding: 20px;
 }
 
-/* Header */
+
 header {
     background: linear-gradient(90deg, #0073b1, #00a86b);
     color: white;
@@ -44,7 +44,7 @@ header h1 {
     margin-top: 10px;
 }
 
-/* Contenu des fichiers */
+
 form {
     display: inline-block;
     margin: 5px 10px 15px 0;
@@ -80,7 +80,7 @@ p {
     font-size: 16px;
 }
 
-/* Footer */
+
 footer {
     text-align: center;
     margin-top: 50px;
@@ -88,7 +88,7 @@ footer {
     font-size: 14px;
 }
 
-/* Responsive */
+
 @media (max-width: 600px) {
     form {
         display: block;

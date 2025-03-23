@@ -1,24 +1,14 @@
-
-
-:root {
-    --epsi-blue: #004b87;
-    --wis-green: #76b947;
-    --light-gray: #f4f4f4;
-    --dark-gray: #333;
-    --white: #ffffff;
-}
-
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--light-gray);
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    color: var(--dark-gray);
+    color: #333333;
 }
 
 header {
-    background: linear-gradient(90deg, var(--epsi-blue), var(--wis-green));
-    color: var(--white);
+    background: linear-gradient(90deg, #004b87, #76b947);
+    color: #ffffff;
     display: flex;
     align-items: center;
     padding: 15px 30px;
@@ -39,7 +29,7 @@ header h1.green {
 .pagemenu {
     font-size: 1.1em;
     font-weight: bold;
-    color: var(--white);
+    color: #ffffff;
 }
 
 .right {
@@ -50,7 +40,7 @@ header h1.green {
 
 h3, h2 {
     text-align: center;
-    color: var(--epsi-blue);
+    color: #004b87;
 }
 
 p {
@@ -63,8 +53,8 @@ form {
 }
 
 button {
-    background-color: var(--wis-green);
-    color: var(--white);
+    background-color: #76b947;
+    color: #ffffff;
     border: none;
     padding: 10px 20px;
     margin-top: 10px;
@@ -79,8 +69,8 @@ button:hover {
 }
 
 div {
-    background-color: var(--white);
-    border: 1px solid #ddd;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
     border-radius: 10px;
     padding: 15px;
     max-width: 500px;
@@ -89,8 +79,8 @@ div {
 }
 
 footer {
-    background-color: var(--epsi-blue);
-    color: var(--white);
+    background-color: #004b87;
+    color: #ffffff;
     text-align: center;
     padding: 15px 0;
     margin-top: 40px;
