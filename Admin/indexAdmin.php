@@ -19,7 +19,7 @@ if ($_SESSION["role"] !== "admin") {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Accueil </title>
-    <link href="../css/indexAmdmin" rel="stylesheet"/>
+    <link href="../css/indexAdmin.css" rel="stylesheet"/>
     <link rel="icon" type="image/png" href="../image/logoEpsi/images.png">
 </head>
 <body>
