@@ -1,0 +1,120 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f7f9;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+
+header {
+    background: linear-gradient(90deg, #0073b1, #00a86b);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+header img {
+    float: left;
+    margin-right: 20px;
+    border-radius: 8px;
+}
+
+header h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.pagemenu a {
+    color: white;
+    text-decoration: underline;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+
+form {
+    background: white;
+    padding: 25px;
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 115, 177, 0.1);
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #0073b1;
+}
+
+form input[type="text"],
+form input[type="date"],
+form select,
+form input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #0073b1;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    transition: border-color 0.3s;
+}
+
+form input:focus,
+form select:focus {
+    border-color: #00a86b;
+    outline: none;
+}
+
+.submitcreatedepot {
+    background: #00a86b;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.submitcreatedepot:hover {
+    background: #0073b1;
+}
+
+
+p[style*="color:green"],
+p[style*="color:red"] {
+    max-width: 600px;
+    margin: 20px auto;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+a {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #0073b1;
+    font-weight: bold;
+}
+
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    color: #666;
+    font-size: 14px;
+}

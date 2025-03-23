@@ -1,0 +1,110 @@
+/* Reset de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f9;
+    color: #333;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    background: linear-gradient(90deg, #0073b1, #00a86b);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+header img {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    border-radius: 8px;
+}
+
+header h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.pagemenu a {
+    color: white;
+    text-decoration: underline;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+/* Contenu des fichiers */
+form {
+    display: inline-block;
+    margin: 5px 10px 15px 0;
+}
+
+form button {
+    background-color: #00a86b;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease;
+}
+
+form button:hover {
+    background-color: #0073b1;
+}
+
+form + form {
+    margin-left: 5px;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+.titre-fichier {
+    font-weight: bold;
+    color: #0073b1;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    color: #666;
+    font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    form {
+        display: block;
+        margin: 10px auto;
+        text-align: center;
+    }
+
+    form button {
+        width: 90%;
+    }
+
+    .titre-fichier {
+        text-align: center;
+    }
+
+    header img {
+        display: none;
+    }
+}

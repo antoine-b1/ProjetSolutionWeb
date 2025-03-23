@@ -18,7 +18,7 @@ require '../config/database.php';
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Création d'un nouveau dépôt </title>
-    <link href="../css/index.css" rel="stylesheet"/>
+    <link href="../css/createDepot.css" rel="stylesheet"/>
     <link rel="icon" type="image/png" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS5VYolg4PlHUkQ7wMn4lTENI-rS9XfFDTOg&s">
 </head>
 <body>

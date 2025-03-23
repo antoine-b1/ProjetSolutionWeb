@@ -1,29 +1,76 @@
+<?php
+session_start();
+require '../config/database.php';
+
+if (!isset($_SESSION["user_id"]) || $_SESSION["role"] !== "admin") {
+    header("Location: ../account/login.php");
+    exit;
+}
+
+$depot_id = $_POST['depot_id'] ?? null;
+
+if (!$depot_id) {
+    echo "Aucun dépôt sélectionné.";
+    exit;
+}
+
+// Récupérer les rendus
+$stmt = $conn->prepare("
+    SELECT dr.fichier, dr.date_rendu, u.nom, u.prenom
+    FROM devoirs_rendus dr
+    JOIN utilisateurs u ON dr.utilisateur_id = u.id
+    WHERE dr.depot_id = :depot_id
+    ORDER BY dr.date_rendu DESC
+");
+$stmt->execute([':depot_id' => $depot_id]);
+$rendus = $stmt->fetchAll();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Devoirs des élèves </title>
-    <link href="../css/index.css" rel="stylesheet"/>
-    <link rel="icon" type="image/png" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS5VYolg4PlHUkQ7wMn4lTENI-rS9XfFDTOg&s">
+    <meta charset="UTF-8">
+    <title>Rendus du devoir</title>
+    <link rel="stylesheet" href="../css/devoirfait.css">
 </head>
 <body>
 
 <header>
-    <img src="https://www.nuitdelinfo.com/inscription/uploads/ecoles/573/logos/logo.png" alt="Logo EPSI/WIS" class="logoepsi" width="85" height="80">
-    <h1 class="green"> Devoirs des élèves </h1>
-    <p class="center"><p class="pagemenu"> Administrateur </p></p>
-    <p class="center">
-        <p class="pagemenu"><a href="../Admin/indexAdmin.php"> Accueil </a></p>
-    </p>
+    <h1>Devoirs des étudiants</h1>
+    <a href="../Admin/indexAdmin.php">← Retour à l'accueil</a>
 </header>
-<p class="right"> École : EPSI/WIS ARRAS </p class="right">      
 
-
-
-<footer>
-    <p>&copy; 2025. Projet Solution Web EPSI. Tous droits réservés.</p>
-</footer>
+<main>
+    <?php if (empty($rendus)): ?>
+        <p>Aucun devoir n'a été rendu pour ce dépôt.</p>
+    <?php else: ?>
+        <table>
+            <thead>
+                <tr>
+                    <th>Étudiant</th>
+                    <th>Fichier</th>
+                    <th>Date de rendu</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($rendus as $rendu): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($rendu['prenom'] . ' ' . $rendu['nom']) ?></td>
+                        <td><?= basename($rendu['fichier']) ?></td>
+                        <td><?= $rendu['date_rendu'] ?></td>
+                        <td>
+                            <form method="post" action="download.php" style="margin:0;">
+                                <input type="hidden" name="fichier" value="<?= htmlspecialchars($rendu['fichier']) ?>">
+                                <button type="submit">Télécharger</button>
+                            </form>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php endif; ?>
+</main>
 
 </body>
 </html>
